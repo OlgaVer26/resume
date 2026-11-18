@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Резюме — Ольга Вершинина</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card-bg: #ffffff;
+      --sidebar-bg: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --accent: #2563eb;
+      --border: #e2e8f0;
+      --tag-bg: #eff6ff;
+      --tag-text: #1d4ed8;
+      --tag-border: #bfdbfe;
+    }
+
+    body.dark {
+      --bg: #0b1120;
+      --card-bg: #1e293b;
+      --sidebar-bg: #0f172a;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --border: #334155;
+      --tag-bg: #1e3a8a;
+      --tag-text: #bfdbfe;
+      --tag-border: #1d4ed8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 30px 15px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .container {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+
+    .btn {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--tag-border);
+      padding: 7px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
+    .resume-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+    }
+
+    .sidebar {
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--border);
+      padding: 28px 24px;
+    }
+
+    .main-content {
+      padding: 28px 32px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 26px;
+    }
+
+    .sidebar-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .sidebar-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .contact-item {
+      font-size: 13px;
+      margin-bottom: 8px;
+      line-height: 1.45;
+      color: var(--text);
+    }
+
+    .contact-item .label {
+      color: var(--text-muted);
+      display: block;
+      font-size: 11.5px;
+      margin-bottom: 1px;
+    }
+
+    .contact-item a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .skill-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      border: 1px solid var(--tag-border);
+      font-size: 11.5px;
+      font-weight: 500;
+      padding: 3px 7px;
+      border-radius: 4px;
+      line-height: 1.3;
+    }
+
+    .edu-item, .info-item {
+      font-size: 12.5px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .edu-item:last-child, .info-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .edu-year {
+      font-weight: 700;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 1px;
+    }
+
+    .main-header {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .main-header h1 {
+      font-size: 28px;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .main-header .title {
+      font-size: 17px;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .content-section {
+      margin-bottom: 26px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-text {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .job-item {
+      margin-bottom: 22px;
+    }
+
+    .job-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 2px;
+    }
+
+    .job-company {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .job-period {
+      font-size: 12px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .job-role {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .job-list {
+      list-style-type: decimal;
+      padding-left: 18px;
+      font-size: 13.5px;
+      color: var(--text);
+    }
+
+    .job-list li {
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+
+    .job-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .resume-layout {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .main-content {
+        padding: 24px;
+      }
+      .job-header {
+        flex-direction: column;
+        gap: 2px;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        color: #000000;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        max-width: 100%;
+      }
+      .top-bar {
+        display: none;
+      }
+      .sidebar {
+        background: #ffffff;
+      }
+      .skill-tag {
+        background: #f1f5f9;
+        color: #0f172a;
+        border-color: #cbd5e1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="top-bar">
+      <button class="btn" onclick="toggleTheme()">Сменить тему</button>
+      <button class="btn" onclick="window.print()">Сохранить в PDF</button>
+    </div>
+
+    <div class="resume-layout">
+      <aside class="sidebar">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Контакты</div>
+          <div class="contact-item">
+            <span class="label">Телефон:</span>
+            <a href="tel:+79289006476">+7 (928) 9006476</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">Telegram:</span>
+            <a href="https://t.me/vershininao" target="_blank">@vershininao</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">Email:</span>
+            <a href="mailto:olgamila@mail.ru">olgamila@mail.ru</a><br>
+            <a href="mailto:olya.versshinina@yandex.ru">olya.versshinina@yandex.ru</a>
+          </div>
+          <div class="contact-item">
+            <span class="label">Локация / Гражданство:</span>
+            Ростов-на-Дону | Россия
+          </div>
+          <div class="contact-item">
+            <span class="label">Формат работы:</span>
+            Полная занятость, удаленно, редкие командировки
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">Ключевые технологии</div>
+          <div class="skills-wrap">
+            <span class="skill-tag">SQL (PostgreSQL, MySQL, MS SQL Server)</span>
+            <span class="skill-tag">Python (Pandas, NumPy, Matplotlib, Seaborn)</span>
+            <span class="skill-tag">Power BI (DAX, Power Query)</span>
+            <span class="skill-tag">Tableau</span>
+            <span class="skill-tag">DataLens</span>
+            <span class="skill-tag">Looker Studio</span>
+            <span class="skill-tag">Excel</span>
+            <span class="skill-tag">Google Sheets</span>
+            <span class="skill-tag">Apps Script</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">Roistat</span>
+            <span class="skill-tag">Platrum</span>
+            <span class="skill-tag">1C</span>
+            <span class="skill-tag">Asternic</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">Образование и курсы</div>
+          <div class="edu-item">
+            <span class="edu-year">2022</span>
+            ОАНО ДПО Скаенг, квалификация Аналитик данных.
+          </div>
+          <div class="edu-item">
+            <span class="edu-year">2003</span>
+            Южный федеральный университет, Ростов-на-Дону, квалификация Историк, диплом.
+          </div>
+          <div class="edu-item">
+            <span class="edu-year">2026</span>
+            МФТИ, Лаборатория инноватики ФПМИ, Промт-инженер.
+          </div>
+          <div class="edu-item">
+            <span class="edu-year">2018</span>
+            Учебный Центр Специалист при МГТУ им. Н.Э. Баумана, Microsoft Excel 2016 (уровни 2, 3), продвинутый пользователь.
+          </div>
+          <div class="edu-item">
+            <span class="edu-year">2011</span>
+            Южно-российская школа инновационного бизнеса (ИУБИП), Практический маркетинг, диплом о переквалификации.
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-title">Дополнительно</div>
+          <div class="info-item">Языки: русский (родной), базовый английский.</div>
+          <div class="info-item">Водительское удостоверение: категория B.</div>
+          <div class="info-item">Профессиональная активность: участие в open-source проектах, развитие IT и аналитических сообществ, передача опыта построения отчетности в бизнес-сообществе Среда.</div>
+          <div class="info-item">Трудовой стаж зафиксирован в электронной трудовой книжке.</div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="main-header">
+          <h1>Ольга Вершинина</h1>
+          <div class="title">Аналитик данных, BI-аналитик</div>
+        </header>
+
+        <section class="content-section">
+          <div class="section-title">О себе</div>
+          <div class="about-text">
+            Аналитик данных и BI-эксперт с практическим опытом более 9 лет в продуктовых и интеграционных проектах. Специализируюсь на построении систем сквозной аналитики, автоматизации управленческой отчетности и коммерческом прогнозировании. Проектирую витрины данных, исследую клиентский отток, настраиваю A/B-тесты и внедряю промт-инжиниринг для ускорения рабочих процессов.
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">Опыт работы</div>
+
+          <div class="job-item">
+            <div class="job-header">
+              <div class="job-company">Бизнес-Аналитика, ведущий IT интегратор, Москва</div>
+              <div class="job-period">Февраль 2017 — Апрель 2026 (9 лет 3 месяца)</div>
+            </div>
+            <div class="job-role">Бизнес-аналитик коммерческого департамента</div>
+            <ol class="job-list">
+              <li>Автоматизация управленческой отчетности: сократила время подготовки регулярных отчетов в 5 раз (с 40 до 8 часов в месяц), снизила время занесения информации до 1 минуты и ускорила выгрузку данных в 3 раза за счет оптимизации внутренних алгоритмов и формирования витрин данных.</li>
+              <li>Развитие коммерческой эффективности и планирования: спроектировала систему грейдов и показателей эффективности, обеспечив рост выручки на 17% за год, а также построила модель прогнозирования доходов с квартальной точностью плюс/минус 4%.</li>
+              <li>Удержание клиентов и сквозной мониторинг: настроила систему отслеживания ключевых бизнес-показателей и жизненного цикла клиентов, снизив отток аудитории на 12% в целевом сегменте на базе когортных исследований и A/B-тестирования.</li>
+            </ol>
+          </div>
+
+          <div class="job-item">
+            <div class="job-header">
+              <div class="job-company">Консалтинговые проекты</div>
+              <div class="job-period">Сентябрь 2019 — Декабрь 2025 (6 лет 4 месяца)</div>
+            </div>
+            <div class="job-role">Data / Product Analyst</div>
+            <ol class="job-list">
+              <li>Исследование рынка и ценообразования: наладила регулярный мониторинг цен и ассортимента конкурентов, а также сезонного спроса, что обеспечило рост продаж заказчиков до +11% в e-commerce и до +30% в туристическом сегменте.</li>
+              <li>Продуктовая оптимизация и проверка контрагентов: повысила конверсию посадочных страниц на 9% за счет анализа пользовательского пути, а также провела комплексный аудит партнеров по официальным реестрам, предотвратив заключение рискованных сделок.</li>
+              <li>Обучение персонала: провела свыше 100 практических вебинаров для 150-200 слушателей, доведя 75% участников с нуля до успешного решения прикладных рабочих задач.</li>
+            </ol>
+          </div>
+
+          <div class="job-item">
+            <div class="job-header">
+              <div class="job-company">Телетел, аутсорсинговая компания полного цикла, Москва</div>
+              <div class="job-period">Октябрь 2017 — Октябрь 2020 (3 года 1 месяц)</div>
+            </div>
+            <div class="job-role">Аналитик колл-центра</div>
+            <ol class="job-list">
+              <li>Автоматизация рутинных процессов: объединила телефонные сервисы с системой учета, сократив ежедневную подготовку сводок с 2 часов до 15 минут в день, и полностью перевела в автоматический режим 3 регулярных отчета.</li>
+              <li>Оперативный мониторинг показателей обслуживания: внедрила систему отслеживания ключевых метрик сервиса в режиме реального времени при ежедневной нагрузке до 500 000 записей.</li>
+              <li>Оптимизация найма и контроль надежности данных: настроила автоматический расчет конверсий этапов подбора персонала, ускорив вывод сотрудников на линию на 15%, и утвердила регламент верификации, обеспечивший стопроцентную достоверность отчетности.</li>
+            </ol>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
